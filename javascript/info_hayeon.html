@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .textField {
+
+            text-align: right;
+            width: 150px;
+        }
+    </style>
+</head>
+
+<body>
+    <table>
+        <tr>
+            <td class="textField">기본 정보 : </td>
+            <td><input class="inputField" id="userInfo" type="text"></td>
+            <td><button onclick="getUerId();">불러오기</button></td>
+        </tr>
+        <tr>
+            <td class="textField">이름 : </td>
+            <td><input class="inputField" id="userName" type="text"></td>
+        </tr>
+        <tr>
+            <td class="textField">주소 : </td>
+            <td><input class="inputField" id="userAddress" type="text"></td>
+        </tr>
+        <tr>
+            <td class="textField">나이 : </td>
+            <td><input class="inputField" id="userAge" type="text"></td>
+        </tr>
+        <tr>
+            <td class="textField">핸드폰 번호 : </td>
+            <td><input class="inputField" type="text" id="userPhone" placeholder="'-'빼고 입력"></td>
+        </tr>
+        <tr>
+            <td class="textField">집전화 번호 : </td>
+            <td><input class="inputField" id="userHome" type="text"></td>
+        </tr>
+    </table>
+    <button onclick="onSave();">저장</button>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"
+        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <script>
+        function getUerId() {
+            $.ajax({
+                url: "../JSON/user.json",
+                type: "get",
+                async: false,
+                success: function (oResult) {
+
+                    if (oResult && oResult.users && 0 < oResult.users.length) {
+                        for (var i = 0; i < oResult.users.length; i++) {
+                            // console.log(oResult.users[i].userID);
+                            console.log(oResult.users[i].userId);
+                            if (oResult.users[i].userId === $("#userInfo").val()) {
+                                // alert("이미 존재하는 ID 입니다.");
+                                // $("#userInfo").text("");
+                                $("#userName").val(oResult.users[i].name);
+                                $("#userAddress").val(oResult.users[i].address);
+                                $("#userAge").val(oResult.users[i].age);
+                                $("#userPhone").val(oResult.users[i].phone);
+                                $("#userHome").val(oResult.users[i].housePhone);
+                            }
+                        }
+                    } else {
+                        alert("데이터가 없습니다.");
+                    }
+                },
+                error: function (oXhr, sTextStatus, oErrorThrown) {
+                    console.log(oXhr);
+                    console.log(sTextStatus);
+                    console.log(oErrorThrown);
+                }
+            });
+
+        }
+
+        function onSave() {
+            if ($("#userInfo").val() !== "" && $("#userName").val() !== "" && $("#userAddress").val() !== "" && $(
+                    "#userAge").val() !== "" &&
+                $("#userPhone").val() !== "" && $("#userHome").val() !== "") {
+                alert("저장 되었습니다.");
+            } else {
+                if ($("#userInfo").val() === "") {
+                    $("#userInfo").css("border-color", "red");
+                } else {
+                    $("#userInfo").css("border-color", "");
+                }
+                if ($("#userName").val() === "") {
+                    $("#userName").css("border-color", "red");
+                } else {
+                    $("#userName").css("border-color", "");
+                }
+                if ($("#userAddress").val() === "") {
+                    $("#userAddress").css("border-color", "red");
+                } else {
+                    $("#userAddress").css("border-color", "");
+                }
+                if ($("#userAge").val() === "") {
+                    $("#userAge").css("border-color", "red");
+                } else {
+                    $("#userAge").css("border-color", "");
+                }
+                if ($("#userPhone").val() === "") {
+                    $("#userPhone").css("border-color", "red");
+                } else {
+                    $("#userPhone").css("border-color", "");
+                }
+                if ($("#userHome").val() === "") {
+                    $("#userHome").css("border-color", "red");
+                } else {
+                    $("#userHome").css("border-color", "");
+                }
+
+            }
+        }
+    </script>
+</body>
+
+</html>
