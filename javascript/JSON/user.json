@@ -1,0 +1,5 @@
+{"users": [
+    {"userId": "hong", "name": "홍길동", "address": "서울특별시 중랑구", "age": 29, "phone": "01011112222", "housePhone": "0212345678"},
+    {"userId": "chulsoo", "name": "배철수", "address": "경기도 오산시 오산구", "age": 59, "phone": "01055543467", "housePhone": ""},
+  {"userId": "hyejin", "name": "김혜진", "address": "강원도 춘천시 천천구", "age": 40, "phone": "01098765432", "housePhone": "03103204406"}
+]}
