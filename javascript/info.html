@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    기본정보: <input type="text" id="userid"></input>
+     <button onclick="callinfo();">불러오기</button><br>
+    이름: <input type="text" id="username"></input><br>
+    주소: <input type="text" id="useraddress"></input><br>
+    나이: <input type="text" id="userage"></input><br>
+    핸드폰번호: <input type="text" id="phonenumber" placeholder="'-'빼고 입력"></input><br>
+    집전화번호: <input type="text" id="housenumber"></input><br>
+    <button onclick="saveinfo();">저장</button>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"
+            integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+            crossorigin="anonymous"></script>
+    <script>
+    function callinfo() {
+      var sBasicInfo = document.querySelector("#userid").value;
+      $.ajax({
+        url:"./json/user.json",
+        type: "get",
+        async: true,
+        success : function (oResult) {
+          for (var i = 0; i < oResult.users.length; i++) {
+            if (sBasicInfo === oResult.users[i].userId){
+
+              document.querySelector("#username").value = oResult.users[i].name;
+              document.querySelector("#useraddress").value = oResult.users[i].address;
+              document.querySelector("#userage").value = oResult.users[i].age;
+              document.querySelector("#phonenumber").value = oResult.users[i].phone;
+              document.querySelector("#housenumber").value = oResult.users[i].housePhone;
+            }
+          }
+        },
+        error: function (oXhrm, sTextStatus, oErrorThrown){
+          console.log(oXhrm);
+          console.log(sTextStatus);
+          console.log(oErrorThrown);
+        }
+      });
+    }
+    </script>
+  </body>
+</html>
