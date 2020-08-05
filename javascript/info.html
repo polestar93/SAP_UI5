@@ -6,10 +6,10 @@
   </head>
   <body>
     기본정보: <input type="text" id="userid"></input>
-     <button onclick="callinfo();">불러오기</button><br>
-    이름: <input type="text" id="username"></input><br>
-    주소: <input type="text" id="useraddress"></input><br>
-    나이: <input type="text" id="userage"></input><br>
+             <button onclick="callinfo();">불러오기</button><br>
+    이름:    <input type="text" id="username"></input><br>
+    주소:    <input type="text" id="useraddress"></input><br>
+    나이:    <input type="text" id="userage"></input><br>
     핸드폰번호: <input type="text" id="phonenumber" placeholder="'-'빼고 입력"></input><br>
     집전화번호: <input type="text" id="housenumber"></input><br>
     <button onclick="saveinfo();">저장</button>
@@ -18,23 +18,40 @@
             crossorigin="anonymous"></script>
     <script>
     function callinfo() {
+      var aInputTags = document.querySelectorAll("input");
       var sBasicInfo = document.querySelector("#userid").value;
+      
       $.ajax({
         url:"./json/user.json",
         type: "get",
-        async: true,
         success : function (oResult) {
-          for (var i = 0; i < oResult.users.length; i++) {
-            if (sBasicInfo === oResult.users[i].userId){
-
-              document.querySelector("#username").value = oResult.users[i].name;
-              document.querySelector("#useraddress").value = oResult.users[i].address;
-              document.querySelector("#userage").value = oResult.users[i].age;
-              document.querySelector("#phonenumber").value = oResult.users[i].phone;
-              document.querySelector("#housenumber").value = oResult.users[i].housePhone;
-            }else{
-              alert("데이터가 없습니다.");
+          var aUsers = oResult.users;
+          var bMatch =  false;
+          for (var i = 0; i < aUsers.length; i++) {
+            if (sBasicInfo === aUsers[i].userId){
+              // document.querySelector("#username").value = oResult.users[i].name;
+              // document.querySelector("#useraddress").value = oResult.users[i].address;
+              // document.querySelector("#userage").value = oResult.users[i].age;
+              // document.querySelector("#phonenumber").value = oResult.users[i].phone;
+              // document.querySelector("#housenumber").value = oResult.users[i].housePhone;
+              // aInputTags[1].value = aUsers[i].name;
+              // aInputTags[2].value = aUsers[i].address;
+              // aInputTags[3].value = aUsers[i].age;
+              // aInputTags[4].value = aUsers[i].phone;
+              // aInputTags[5].value = aUsers[i].housePhone;
+              putInputData(aInputTags, aUsers[i])
+              
             }
+            if{
+              //   alert("데이터가 없습니다.");
+             //   aInputTags[1].value = "";
+              //   aInputTags[2].value = "";
+              //   aInputTags[3].value = "";
+              //   aInputTags[4].value = "";
+              //   aInputTags[5].value = "";
+              // 
+            }
+            
           }
         },
         error: function (oXhrm, sTextStatus, oErrorThrown){
@@ -43,6 +60,17 @@
           console.log(oErrorThrown);
         }
       });
+    }
+    function putInputData(aInputTags, oInputData){
+      var aFieldName = ["name", "address", "age", "phone", "housePhone"]
+      for(var i=1; i<aInputTags.length; i++){
+        aInputTags[i].value = oInputData ? oInputData[aFieldName[i-1]]: "";
+      }
+      // aInputTags[1].value = aUsers[i].name;
+      // aInputTags[2].value = aUsers[i].address;
+      // aInputTags[3].value = aUsers[i].age;
+      // aInputTags[4].value = aUsers[i].phone;
+      // aInputTags[5].value = aUsers[i].housePhone;
     }
     function saveinfo(){
       
