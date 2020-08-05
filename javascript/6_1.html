@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <div id="stopWatch"></div>
+    <button onclick="startWatch();">start</div>
+      <button onclick="stopWatch();">stop</div>
+    <!-- <button onclick="openPopup()">open</button> -->
+    <script type="text/javascript">
+    // function openPopup() {
+      //blank 새로운창 오픈
+      // var oPopup =  window.open("./openTest.html","_balnk", "width=600, height=400, toolbar=no, menubar=no");
+      //setTimeout(function () {oPopup.close();}, 4000);
+
+      var iStopWatch = 0;
+      var myStopWatach;
+
+     function startWatch() {
+         if( myStopWatach===undefined ){
+           myStopWatach = setInterval(function () {
+           var oStopWatch = document.querySelector("#stopWatch");
+           oStopWatch.innerHTML = ++iStopWatch;
+         }, 1000);
+       }
+     }
+
+     function stopWatch() {
+       clearInterval(myStopWatach);
+     }
+    </script>
+
+  </body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <script type="text/javascript">
+      // var aCarMaker = new Array();
+      // aCarMaker[0] = "Benz";
+      // aCarMaker[1] = "BMW";
+      // aCarMaker[2] = "Audi";
+      // console.log(aCarMaker);
+
+      // var aCarMaker2 = ["Benz2", "BMW2", "Audi2"];
+
+      // for (var i = 0; i < aCarMaker2.length; i++) {
+      //   document.write("나는 "+ aCarMaker2[i] + "에서 생산한 차를 가지고있습니다.<br/>")
+      // }
+
+      // var aCarMakers = ["Benz", "BMW", "Audi"];
+      // document.write(aCarMakers+"<br/>");
+      // aCarMakers.push("Hyundai");
+      // document.write(aCarMakers+"<br/>");
+      // document.write(aCarMakers.join()+"<br/>");
+      // console.log(aCarMakers.join());
+      //
+      // var iIndex = aCarMakers.indexOf("BMW");
+      // document.write(iIndex+"<br/>");
+
+      // var aCarMakers = ["Benz", "BMW", "Audi"];
+      // var aAfterSpliceCarmakers = aCarMakers.splice(1,2);
+      // document.write(aCarMakers+"<br/>");
+      // document.write(aAfterSpliceCarmakers+"<br/>");
+
+      // aCarMakers.splice(1, 0, "Lamborghini", "Porche", "Bugatti");
+      // document.write(aCarMakers+"<br/>");
+      //
+      // var aAfterSliceCarmakers1 =aCarMakers.slice(2);
+      // document.write(aAfterSliceCarmakers1+"<br/>");
+      // var aAfterSliceCarmakers2 =aCarMakers.slice(2,3);
+      // document.write(aAfterSliceCarmakers2+"<br/>");
+      // var aAfterSliceCarmakers3 =aCarMakers.slice(1,3);
+      // document.write(aAfterSliceCarmakers3+"<br/>");
+      // document.write(aCarMakers+"<br/>");
+
+
+      var aNumbers = [1, 2, 3, 4, 5];
+      // var aNumbersMap =aNumbers.map(function (item) {
+      //   return item ** 2;
+      // });
+      //
+      //  document.write(aNumbersMap+"<br/>");
+      //  document.write(aNumbers+"<br/>");
+      //
+      //  var aOver3 = aNumbers.filter(function(item){
+      //    return item>3;
+      //  });
+      //
+      //  document.write(aOver3+"<br/>");
+      //  document.write(aNumbers+"<br/>");
+      //
+      //  var bAllOver3 = aNumbers.every(function(item){
+      //    return item > 3;
+      //  });
+      //  document.write(bAllOver3+"<br/>");
+      //  var bAllOver0 = aNumbers.every(function(item){
+      //    return item > 0;
+      //  });
+      //  document.write(bAllOver0+"<br/>");
+
+      var bSomeOver3 = aNumbers.some(function (aNumbersValue) {
+        return aNumbersValue > 3;
+      });
+      document.write(bSomeOver3+"<br/>");
+
+      var iFirstitem = aNumbers.find(function (item) {
+        return item > 3;
+      });
+      document.write(iFirstitem+"<br/>");
+    </script>
+  </body>
+</html>

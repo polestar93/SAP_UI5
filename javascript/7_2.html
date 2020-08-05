@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style>
+      .important {
+        font-size: 40px;
+      }
+      .read {
+        color: red;
+      }
+      .bold {
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <ol>
+      <li>WEB</li>
+      <li>HTML</li>
+      <li class="abc">CSS</li> <!--function적용 못함-->
+      <li id="javascript">Javascript</li> <!--동적으로 화면 구성 가능 -->
+      <li id="sapui5" class="important read">SAPUI5</li>
+      <li><a id="daum" target="_blank" href="https://www.daum.net">DAUM</a></li>
+    </ol>
+    <img id ="img" src="../HTML./picture/noon.jpg" width="400" height="300"></img>
+    <button onclick="changeHref();">Change</button>
+    <button onclick="changeImg();">Changeimg</button>
+    <!-- <button onclick="togglesetImportant();">Important</button>
+    <button onclick="toggleReadClass();">Read</button>
+    <button onclick="togglesBold();">Bold</button> -->
+    <script>
+
+    // var sTagName = document.querySelector("#javascript").tagName;
+    //   document.write(sTagName);
+    //   document.write("<br/>");
+    //   document.querySelector("#javascript").tagName = "a";
+    //   document.write(document.querySelector("#javascript").tagName);
+
+    // var oJavascriptTag = document.querySelector("#javascript");
+    // document.write(oJavascriptTag.id);
+    // document.write("<br/>");
+    //
+    // oJavascriptTag.id = "script";
+    // document.write(oJavascriptTag.id);
+
+    // var oSapui5Tag = document.getElementById("sapui5");
+    // document.write(oSapui5Tag.classList);
+    // document.write("<br/>""<br/>");
+    //
+    // document.write(oSapui5Tag.classList[1]);
+    // document.write("<br/>""<br/>");
+    //
+    // oSapui5Tag.classList.add("bold");
+    // document.write(oSapui5Tag.classList);
+    // document.write("<br/>""<br/>");
+    //
+    // oSapui5Tag.classList.remove("bold");
+    // document.write(oSapui5Tag.classList);
+    // document.write("<br/>""<br/>");
+    //
+    // oSapui5Tag.classList.toggle("bold");
+
+    // var oSapui5Tag = document.querySelector("#sapui5");
+    //  document.write("<br/><br/>");
+    //  document.write(oSapui5Tag.classList);
+    //  document.write("<br/><br/>");
+    //
+    //  document.write(oSapui5Tag.classList[1]);
+    //  document.write("<br/><br/>");
+    //
+    //  oSapui5Tag.classList.add("bold");
+    //  document.write(oSapui5Tag.classList);
+    //  document.write("<br/><br/>");
+    //
+    //  oSapui5Tag.classList.remove("bold");
+    //  document.write(oSapui5Tag.classList);
+    //  document.write("<br/><br/>");
+    //
+    //  oSapui5Tag.classList.toggle("bold");
+    //  document.write(oSapui5Tag.classList);
+    //
+    //  var oSapui5 = document.querySelector(".abc");
+    //  function togglesetImportant() {
+    //   oSapui5.classList.toggle("important");
+    //  }
+    //
+    //  function toggleReadClass() {
+    //   oSapui5.classList.toggle("read");
+    //  }
+    //
+    //  function togglesBold() {
+    //   oSapui5.classList.toggle("bold");
+    //  }
+
+    function changeHref() {
+      var oDaumTag = document.querySelector("#daum");
+      var sHref = oDaumTag.getAttribute("href");
+      alert(sHref);
+
+      oDaumTag.setAttribute("href", "https://www.naver.com");
+      oDaumTag.setAttribute("title", "naver로 이동합니다.");
+    }
+
+    function changeImg() {
+      var oImgTag = document.querySelector("#img");
+      var sSrc = oImgTag.getAttribute("src");
+
+      if (sSrc==="../HTML./picture/noon.jpg") {
+        oImgTag.setAttribute("src", "../HTML./picture/chul.jpg");
+      }else {
+        oImgTag.setAttribute("src", "../HTML./picture/noon.jpg");
+      }
+    }
+    </script>
+  </body>
+</html>

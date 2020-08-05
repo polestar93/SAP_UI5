@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <ol>
+      <li>WEB</li>
+      <li>HTML</li>
+      <li>CSS</li>
+      <li id="javascript">javascript</li>
+      <li>SAPUI5</li>
+    </ol>
+    <ul>
+      <li>WEB2</li>
+      <li>HTML2</li>
+      <li class ="active">CSS2</li>
+      <li id="javascript">javascript2</li>
+      <li>SAPUI5_2</li>
+      <li><a id="target" target="_blank" href="https://www.daum.net">DAUM</a></li>
+    </ul>
+    <button onclick="changeHref();">change</button>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js"
+          integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+          crossorigin="anonymous"></script>
+
+    <script type="text/javascript">
+    function changeHref() {
+      $("#target").attr("href", "https://www.google.com");
+    }
+    $("li").css("color","red");
+    $(".active").css("color", "skyblue");
+    $("#javascript").css("color", "skyblue");
+    </script>
+  </body>
+</html>

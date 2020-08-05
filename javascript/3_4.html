@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <script>
+      // document.write(typeof "javascript");
+      // document.write("<br/>");
+      // document.write(typeof 95);
+      // document.write("<br/>");
+      // document.write(typeof true);
+      // var sMessage;
+      // console.log(sMessage);
+
+      // 이렇게 안씀
+      // var sMessage2 = undefined;
+      // console.log(sMessage2);
+
+      // var oCar = null;
+      // document.write(typeof oCar);
+
+      // var sMessage = "Hello World";
+      // var bMessageAsBoolean = Boolean(sMessage);
+      // document.write(bMessageAsBoolean);
+      // document.write("<br/>");
+
+      // if ( sMessage ){
+      //   document.write("sMessage 값은 true");
+      // } else {
+      //   document.write("sMessage 값은 false");
+      // }
+      // var fNum1 = 1.1;
+      // var fNum2 = 0.1;
+      // var fNum3 = .1;
+      //
+      // document.write(fNum1);
+      // document.write("<br/>");
+      // document.write(fNum2);
+      // document.write("<br/>");
+      // document.write(fNum3);
+      //
+      // var fNum4 = 1.;
+      // var fNum5 = 10.0;
+      //
+      // document.write("<br/>");
+      // document.write(fNum4);
+      // document.write("<br/>");
+      // document.write(fNum5);
+
+      // var fNum6 = 0.05;
+      // var fNum7 = 0.25;
+      //
+      // document.write("<br/>");
+      // document.write(fNum6+fNum7);
+      //
+      // var fNum6 = 0.15;
+      // var fNum7 = 0.15;
+      //
+      // document.write("<br/>");
+      // document.write(fNum6+fNum7);
+      //
+      // var fNum6 = 0.1;
+      // var fNum7 = 0.2;
+      //
+      // document.write("<br/>");
+      // document.write(fNum6+fNum7);
+
+      // var iNum1 = 10;
+      // var iNum2 = 20;
+      // var iSumNum = iNum1 + iNum2;
+      // document.write("<br/>");
+      // document.write(iSumNum);
+      // iSumNum = NaN;
+      // var iMinusNum = iSumNum - 5;
+      // document.write("<br/>");
+      // document.write(iMinusNum);
+      // var iDivision = iMinusNum / 5;
+
+      // document.write("<br/>");
+      // document.write(isNaN(NaN));
+      //
+      // document.write("<br/>");
+      // document.write(isNaN(10));
+      //
+      // document.write("<br/>");
+      // document.write(isNaN("10"));
+      //
+      // document.write("<br/>");
+      // document.write(isNaN("blue"));
+      //
+      // document.write("<br/>");
+      // document.write(isNaN(true));
+
+      //parseInt
+      // document.write("<br/>");
+      // document.write(parseInt("1234blue"));
+      //
+      // document.write("<br/>");
+      // document.write(parseInt(""));
+      //
+      // document.write("<br/>");
+      // document.write(parseInt("22.5"));
+      //
+      // document.write("<br/>");
+      // document.write(parseInt("22.8"));
+      //
+      // document.write("<br/>");
+      // document.write(parseInt("70"));
+
+      //parseFloat
+      // document.write("<br/>");
+      // document.write(parseFloat("1234blue"));
+      //
+      // document.write("<br/>");
+      // document.write(parseFloat(""));
+      //
+      // document.write("<br/>");
+      // document.write(parseFloat("22.5"));
+      //
+      // document.write("<br/>");
+      // document.write(parseFloat("22.88.5"));
+      //
+      // document.write("<br/>");
+      // document.write(parseFloat("70"));
+
+      // var fReturnValue = parseFloat("22.88.5");
+      // var sReturnValue =document.write();
+      // document.write("<br/>");
+      // document.write(fReturnValue);
+      // document.write("<br/>");
+      // document.write(sReturnValue);
+
+      // var sFirstName = "jisung";
+      // var sSecondName = 'park';
+      // var sFullName2 = sFirstName + " " + sSecondName;
+      // // var sThirdName = "Hugh';
+      // document.write("<br/>");
+      // document.write(sFirstName);
+      // document.write("<br/>");
+      // document.write(sSecondName);
+      // document.write("<br/>");
+      // document.write(sFullName2);
+      //
+      // var sFullName = "jisung park's   full";
+      // document.write("<br/>");
+      // document.write(sFullName);
+
+      // var iAge = 11;
+      // var sAgeAsStirng = iAge.toString();
+      // document.write("<br/>");
+      // document.write(typeof sAgeAsStirng);
+      //
+      //
+      // var bHeight = true;
+      // bHeight = "" +bHeight;
+      // document.write("<br/>");
+      // document.write(typeof bHeight);
+      // document.write("<br/>");
+      // document.write(bHeight);
+      // document.write("<br/>");
+      // document.write(true);
+
+      // var sName = "Hugh";
+      // var sName2 = sName;
+      // document.write("<br/>");
+      // document.write(sName);
+      // document.write("<br/>");
+      // document.write(sName2);
+      // sName2 = "Nicolas";
+      // document.write("<br/>");
+      // document.write(sName2);
+
+      var oCar = {
+        name: "canival",
+        price: 4000,
+        position: 0,
+        fly: false,
+        go: function () {
+          this.position += 1;
+        }
+      };
+
+      console.log(oCar);
+
+      var oCar2 = {name: "tico"};
+      oCar2.name = "sonata";
+      oCar2["price"] = 3500;
+      oCar2.position = 0;
+      oCar2.fly = false;
+      oCar2.go = function (){
+        this.position += 1;
+      };
+      oCar2["car maker"] = "Hyundai";
+      // oCar2.car maker = "Hyundai";이거 안됨
+
+      console.log(oCar2);
+
+      var oCar3 = oCar2;
+      console.log("=====oCar3=====");
+      console.log(oCar3);
+      oCar3.name = "sorento";
+      console.log("=====oCar2=====");
+      console.log(oCar2);
+      console.log("=====oCar3=====");
+      console.log(oCar3);
+
+    </script>
+  </body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <ol>
+      <li>WEB</li>
+      <li>HTML</li>
+      <li>CSS</li>
+      <li id="javascript">Javascript</li>
+      <li class="sapui5">SAPUI5</li>
+    </ol>
+    <ul>
+      <li>WEB2</li>
+      <li>HTML2</li>
+      <li>CSS2</li>
+      <li>Javascript2</li>
+      <li>SAPUI52</li>
+    </ul>
+    <script>
+    // function changeColor() {
+    //   var oJavascriptLi = document.getElementById("javascript");
+    //   oJavascriptLi.style.color = "red";
+    // }
+    // var oLiList = document.getElementsByTagName("li");
+    //
+    // for (var i = 0; i < oLiList.length; i++) {
+    //   if (i%2 ===0) {
+    //     oLiList[i].style.color = "red";
+    //   }else {
+    //     oLiList[i].style.color = "blue";
+    //   };
+    // }
+
+    // var oUl = document.getElementsByTagName("ul")[0];
+    // var aLiList = oUl.getElementsByTagName("li");
+    //
+    // for (var i = 0; i < aLiList.length; i++) {
+    //   aLiList[i].style.color = "red";
+    // }
+
+    // var oLi = document.querySelector("li");
+    // oLi.style.color = "red";
+    // var oJavascriptLi = document.querySelector("#javascript");
+    // oJavascriptLi.style.color = "orange";
+    // var oSapui5Li =document.querySelector(".sapui5");
+    // oSapui5Li.style.color = "gray";
+
+    var oLiList = document.querySelectorAll("li");
+    for (var i = 0; i < oLiList.length; i++) {
+      oLiList[i].style.color ="red";
+    }
+
+    var oJavascriptLi = document.querySelector("#javascript");
+    oJavascriptLi.style.color = "skyblue";
+
+    </script>
+  </body>
+</html>

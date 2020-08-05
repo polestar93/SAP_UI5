@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <script type="text/javascript">
+      var oToday = new Date();
+      var oBirthday = new Date(95, 11, 17);
+      var oBirthday2 = new Date(95, 11, 17, 3, 24, 0);
+      var oBirthday3 = new Date("1995-11-17");
+      var oBirthday4 = new Date("1995.11.17");
+
+      // console.log(oToday);
+      // console.log(oBirthday);
+      // console.log(oBirthday2);
+      // console.log(oBirthday3);
+      // console.log(oBirthday4);
+
+      document.write(oToday.getFullYear()+"<br/>");
+      document.write(oToday.getMonth()+"<br/>");
+      document.write(oToday.getDate()+"<br/>");
+      document.write(oToday.getDay()+"<br/>");
+
+      var aDays = ["일", "월", "화", "수", "목", "금", "토"];
+      // var oMonth = oToday.getMonth() + 1;
+      document.write(aDays[oToday.getDay()] + "요일"+"<br/>");
+
+      // document.write(oToday.getFullYear() + "." + oMonth + "." + oToday.getDate() );
+      var sDate = oToday.getFullYear()+"."+"0"+(oToday.getMonth() + 1)+"."+oToday.getDate();
+      document.write(sDate+"<br/>");
+      /*3항 연산자 사용*/
+      function getFormatDate() {
+        var iYear = oToday.getFullYear();
+        var iMonth = oToday.getMonth()+1;
+        var iDate = oToday.getDate();
+
+        return iYear + "." + (iMonth<10 ? "0" + iMonth:iMonth) + "." + (iDate<10 ? "0" +iDate:iDate);
+      }
+
+      document.write(getFormatDate()+"<br/>");
+
+    </script>
+
+  </body>
+</html>

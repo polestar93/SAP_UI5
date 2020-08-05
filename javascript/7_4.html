@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <!-- <button onclick="myButton(event);">buttonType</button><br>
+    <input type="text" onchange="myInput(event);"></input> -->
+
+    <button id="targetButton">buttonType</button>
+    <input type="text" id="targetInput"></input>
+
+
+    <script type="text/javascript">
+      // function myButton(oEvent) {
+      //   console.log(oEvent.target);
+      //   console.log(oEvent.type);
+      //   console.log(oEvent);
+      // }
+      //
+      // function myInput(oEvent) {
+      //   var sInputValue = oEvent.target.value;
+      //
+      //   console.log(oEvent.target);
+      //   console.log(oEvent.type);
+      //   console.log(oEvent);
+      // }
+
+      var oTargetButton = document.querySelector("#targetButton");
+      var oTargetInput = document.querySelector("#targetInput");
+
+      oTargetButton.onclick =function (oEvent) {
+        alert("1번째 클릭");
+      }
+      oTargetButton.onclick =function (oEvent) {
+        alert("2번째 클릭");
+      }
+      oTargetInput.onchange =function (oEvent) {
+        alert("oEvent.target : "+oEvent.target+", oEvent.type : "+oEvent.type);
+      }
+
+      // oTargetButton.addEventListener("이벤트 종류","콜백함수");
+      // oTargetButton.addEventListener("click",function (oEvent) {
+      //   alert("1번째 클릭");
+      // });
+      // oTargetButton.addEventListener("click",function (oEvent) {
+      //   alert("2번째 클릭");
+      // });
+      // oTargetInput.addEventListener("change",function (oEvent) {
+      //   alert("oEvent.target : "+oEvent.target+", oEvent.type : "+oEvent.type);
+      // });
+    </script>
+  </body>
+</html>

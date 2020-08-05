@@ -1,0 +1,20 @@
+[{
+  "name": "sonata",
+  "price": 3000,
+  "maker": "Hyundai"
+},
+ {
+   "name": "avante",
+  "price": 2000,
+  "maker": "Hyundai"
+},
+ {
+   "name": "sorento",
+  "price": 4000,
+  "maker": "Kia"
+},
+ {
+   "name": "traverse",
+  "price": 5000,
+  "maker": "Chevorlet"
+  }]

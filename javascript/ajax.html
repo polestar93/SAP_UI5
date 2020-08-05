@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <p>hello world</p>
+    <script type="text/javascript">
+      var oXhr = new XMLHttpRequest();
+      oXhr.open("GET", "./JSON/user.json");
+      oXhr.onreadystatechange = function () {
+        if (oXhr.readyState=== 4 && oXhr.status === 200) {
+        var sResponseText = oXhr.responseText;
+        var oResponseText = JSON.parse(sResponseText);
+        console.log(sResponseText);
+        console.log(oResponseText);
+        for (var i = 0; i < oResponseText.length; i++) {
+          document.write(oResponseText[i].name+"<br/>");
+        }
+        }
+      }
+      oXhr.send();
+      console.log("======1======");
+
+      // var oCar = {
+      //   name: "sonata",
+      //   price: 3000
+      // }
+      // var oCar2 = {
+      //   "name": "sonata",
+      //   "price": 3000
+      // }
+      //
+      // console.log(Json.stringify(oCar));
+      // console.log(Json.stringify(oCar2));
+    </script>
+  </body>
+</html>
