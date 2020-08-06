@@ -5,28 +5,47 @@
     <title></title>
   </head>
   <body>
-    <script src="https://code.jquery.com/jquery-3.5.1.js"
-          integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <button onclick="addLine();">추가</button>
+    <button onclick="removeLIne();">삭제</button>
+    <ul id="myMenu">
+      <li>HTML</li>
+      <li>CSS</li>
+      <li>Javascript</li>
+    </ul>
+    <script 
+          src="https://code.jquery.com/jquery-3.5.1.js"
+          integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" 
+          crossorigin="anonymous"></script>
       <script>
-          $.ajax({
-              url: "./JSON/user.json",
-              type: "get",
-              success: function (oResult) {
-                console.log("=====2=====");
-                  if (oResult) {
-                      document.write(oResult && 0<oResult.users.length);
-                      console.log(oResult);
-                      document.write(oResult.users);
-                  } else {
-                      alert("데이터가 없습니다.");
-                  }
-              },
+        var iLine =1;
+        function addLine(){
+          $("#myMenu").append("<li>addLine" + iLine + "</li>");
+          iLine++;
+        }
+
+        function removeLIne(){
+          var oFirstTag = document.querySelector("li");
+          $(oFirstTag).remove();
+        }
+          // $.ajax({
+          //     url: "./JSON/user.json",
+          //     type: "get",
+          //     success: function (oResult) {
+          //       console.log("=====2=====");
+          //         if (oResult) {
+          //             document.write(oResult && 0<oResult.users.length);
+          //             console.log(oResult);
+          //             document.write(oResult.users);
+          //         } else {
+          //             alert("데이터가 없습니다.");
+          //         }
+          //     },
               // error: function (oXhr, sTextStatus, oErrorThrown) {
               //     console.log(oXhr);
               //     console.log(sTextStatus);
               //     console.log(oErrorThrown);
               // }
-          });
+          // });
       </script>
 
   </body>

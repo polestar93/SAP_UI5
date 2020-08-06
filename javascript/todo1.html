@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="todo.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.1/components/button.min.css">
+  </head>
+  <body>
+    <div id="grid">
+      <div>
+        <div id="myDIV" class="header">
+        <h2>My To Do List</h2>
+          <input id="toDoText" type="text" placeholder="Title...">
+           <span onclick="addline();" class="addBtn">Add</span>
+        </div>
+
+        <ul id="myUL">
+          
+        </ul>
+
+        <div class="button_area">
+          <div>
+            <button onclick="del();" class="ui grey button">삭제</button>
+            <button onclick="complete();" class="ui brown button">완료</button>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div id="myDIV2" class="header">
+        <h2>Complete To Do List</h2>
+          <input style="visibility: hidden;" type="text" placeholder="Title...">
+           <span style="visibility: hidden;" class="addBtn">Add</span>
+        </div>
+
+        <ul id="myUL2">
+          
+        </ul>
+
+        <!-- <div class="button_area">
+          <div>
+            <button class="ui grey button">삭제</button>
+            <button class="ui brown button">완료</button>
+          </div>
+        </div> -->
+      </div>
+      <script
+        src="https://code.jquery.com/jquery-3.5.1.js"
+        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+        crossorigin="anonymous"></script>
+    <script>
+
+      var aLiList = document.querySelector('ul');
+
+      aLiList.addEventListener('click', function(ev){
+      if (ev.target.tagName === 'LI'){
+      ev.target.classList.toggle('checked');
+        }
+      }, false);
+
+      var aLiList = document.querySelector('#myUL2');
+
+      aLiList.addEventListener('click', function(ev){
+      if (ev.target.tagName === 'LI'){
+      ev.target.classList.toggle('checked');
+        }
+      }, false);
+
+    
+      $.ajax({
+        url: "./json/todo.json",
+        type : "get",
+        success: function (oResult) {
+          if( oResult && 0<oResult.todo.length ){
+             console.log(oResult.todo);
+             for(i=0; i<oResult.todo.length; i++){
+              $("#myUL").append("<li><span>"+oResult.todo[i].title+"</span><span class=\"date\">"+oResult.todo[i].inputDate+"</span></li>");
+             }
+          }
+        }
+      });
+      $.ajax({
+        url: "./json/complete.json",
+        type : "get",
+        success: function (oResult) {
+          if( oResult && 0<oResult.complete.length ){
+             console.log(oResult.complete);
+             for(i=0; i<oResult.complete.length; i++){
+              $("#myUL2").append("<li><span>"+oResult.complete[i].title+"</span><span class=\"date\">"+oResult.complete[i].inputDate+"</span></li>");
+             }
+          }
+        }
+      });
+      function addline(){
+        // var aToDo = document.querySelector("#toDoText").value;
+        $("#myUL").append("<li><span>"+$("#toDoText").val()+"</span><span class=\"date\">"+new Date().toLocaleString()+"</span></li>");
+      };
+
+      function complete(){
+        var oCheck = document.querySelectorAll(".checked");
+
+        if(oCheck && 0<oCheck.length){
+          // for(i=0; i<oCheck.length; i++){
+            $("#myUL2").append(oCheck);
+            // console.log(oCheck[i].ch);
+
+            //   $("#myUL2").append("<li><span>"+oCheck[i].children+"</span><span class=\"date\">"+new Date().toLocaleString()+"</span></li>");
+            //  }
+        }
+      }
+
+      function del(){
+        var oCheck = document.querySelectorAll(".checked");
+        if(oCheck && 0<oCheck.length){
+          for(i=0; i<oCheck.length; i++){
+            $(oCheck).remove();
+             }
+        }
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <link rel="stylesheet" href="todo.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.1/components/button.min.css">
+</head>
+
+<body>
+
+  <div id="grid">
+    <div>
+      <div id="myDIV" class="header">
+        <h2>My To Do List</h2>
+        <input type="text" id="todoInput" placeholder="Title...">
+        <span class="addBtn" onclick="todoInput();">Add</span>
+      </div>
+
+      <ul id="myUL">
+
+      </ul>
+
+      <div class="button_area">
+        <div>
+          <button class="ui grey button" onclick="deleteList();">삭제</button>
+          <button class="ui brown button" onclick="completeList();">완료</button>
+        </div>
+      </div>
+    </div>
+    <div id="grid2">
+      <div>
+        <div id="myDIV" class="header">
+          <h2>Complete To Do List</h2>
+          <input type="text" style="visibility: hidden;" placeholder="Title...">
+          <span class="addBtn" style="visibility: hidden;">Add</span>
+        </div>
+
+        <ul id="myULcom">
+
+        </ul>
+
+      </div>
+      <script src="https://code.jquery.com/jquery-3.5.1.js"
+        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+      <script>
+        // add a "checke" symbol when clicking on a list it em
+        var aLiList = document.querySelector("ul");
+        aLiList.addEventListener('click', function (ev) {
+          if (ev.target.tagName === 'LI') {
+            var check = ev.target.classList.toggle('checked');
+
+            return check;
+          }
+        }, false);
+
+        $.ajax({
+          url: "./JSON/todo.json",
+          type: "get",
+          success: function (oResult) {
+            // $("#myMenu").append("<li>SAPUI5" + iLine + "</li>");
+            if (oResult && oResult.todo && 0 < oResult.todo.length) {
+              for (var i = 0; i < oResult.todo.length; i++) {
+
+                $("#myUL").append("<li><span class='todo'>" + oResult.todo[i].title +
+                  "</span><span class='date'>" + oResult
+                  .todo[i].inputDate + "</span></li>");
+
+              }
+            } else {
+
+            }
+
+          },
+          error: function (oXhr, sTextStatus, oErrorThrown) {
+            console.log(oXhr);
+            console.log(sTextStatus);
+            console.log(oErrorThrown);
+          }
+        });
+        $.ajax({
+          url: "./JSON/complete.json",
+          type: "get",
+          success: function (oResult) {
+            // $("#myMenu").append("<li>SAPUI5" + iLine + "</li>");
+            if (oResult && oResult.complete && 0 < oResult.complete.length) {
+              for (var i = 0; i < oResult.complete.length; i++) {
+
+                $("#myULcom").append("<li><span class='todo'>" + oResult.complete[i].title +
+                  "</span><span class='date'>" +
+                  oResult
+                  .complete[i].inputDate + "</span></li>");
+
+              }
+            } else {
+
+            }
+
+          },
+          error: function (oXhr, sTextStatus, oErrorThrown) {
+            console.log(oXhr);
+            console.log(sTextStatus);
+            console.log(oErrorThrown);
+          }
+        });
+
+        function todoInput() {
+          if ($("#todoInput").val()) {
+            $("#myUL").append("<li><span>" + $("#todoInput").val() + "</span><span class='date'>" + setDate() +
+              "</span></li>");
+          }
+        }
+
+        function setDate() {
+          var newDate = new Date();
+
+
+          theYear = newDate.getFullYear();
+          theMonth = newDate.getMonth();
+          theDate = newDate.getDate();
+          theHours = newDate.getHours();
+          theMinutes = newDate.getMinutes();
+          theSeconds = newDate.getSeconds();
+
+          if (theHours > 12) {
+            theHours = theHours - 12;
+            if (theHours < 10) {
+              theHours = "0" + theHours;
+            }
+            theHours = "오전 " + theHours;
+          } else {
+            if (theHours < 10) {
+              theHours = "0" + theHours;
+            }
+            theHours = "오후 " + theHours;
+          }
+
+          var returnDate = theYear + ". " + theMonth + ". " + theDate + ". " +
+            theHours + ":" + theMinutes + ":" + theSeconds;
+
+          return returnDate;
+        }
+
+        function deleteList() {
+          var check = document.querySelectorAll("ul");
+          for (var i = 0; i < check.length; i++) {
+            if (check[i].querySelector(".checked")) {
+              console.log(check[i].querySelector(".checked"));
+              $(check[i].querySelector(".checked")).remove();
+            }
+          }
+        }
+
+        function completeList() {
+          var check = document.querySelectorAll("ul");
+          for (var i = 0; i < check.length; i++) {
+            if (check[i].querySelector(".checked")) {
+              console.log(check[i].querySelector(".checked").querySelector(
+                ".todo"));
+              $("#myULcom").append("<li><span class='todo'>" + check[i].querySelector(".checked").querySelector(
+                  ".todo").textContent +
+                "</span><span class='date'>" +
+                check[i].querySelector(".checked").querySelector(".date").textContent + "</span></li>");
+              $(check[i].querySelector(".checked")).remove();
+
+
+            }
+          }
+        }
+      </script>
+</body>
+
+</html>

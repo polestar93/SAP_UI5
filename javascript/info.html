@@ -42,9 +42,9 @@
               putInputData(aInputTags, aUsers[i])
               
             }
-            if{
+            if(!bMatch){
               //   alert("데이터가 없습니다.");
-             //   aInputTags[1].value = "";
+              //   aInputTags[1].value = "";
               //   aInputTags[2].value = "";
               //   aInputTags[3].value = "";
               //   aInputTags[4].value = "";
@@ -54,11 +54,11 @@
             
           }
         },
-        error: function (oXhrm, sTextStatus, oErrorThrown){
-          console.log(oXhrm);
-          console.log(sTextStatus);
-          console.log(oErrorThrown);
-        }
+        // error: function (oXhrm, sTextStatus, oErrorThrown){
+        //   console.log(oXhrm);
+        //   console.log(sTextStatus);
+        //   console.log(oErrorThrown);
+        // }
       });
     }
     function putInputData(aInputTags, oInputData){
@@ -73,7 +73,14 @@
       // aInputTags[5].value = aUsers[i].housePhone;
     }
     function saveinfo(){
-      
+      var aInputTags = document.querySelectorAll("input");
+      for(var i=1; i<aInputTags.length-1; i++){
+        if( aInputTags[i].value ===""){
+          aInputTags[i].style.borderColor = "red";
+        }else{
+          aInputTags[i].style.borderColor = "";
+        }
+      }
     }
     </script>
   </body>
