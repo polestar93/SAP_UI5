@@ -92,11 +92,18 @@
         }
       });
       function addline(){
-        // var aToDo = document.querySelector("#toDoText").value;
-        $("#myUL").append("<li><span>"+$("#toDoText").val()+"</span><span class=\"date\">"+new Date().toLocaleString()+"</span></li>");
+         var sToDo = document.querySelector("#toDoText").value;
+         if (sToDo.trim()!=="") {
+          $("#myUL").append("<li><span>"+sToDo+"</span><span class=\"date\">"+new Date().toLocaleString()+"</span></li>");
+         }else{
+           alert("데이터가 없습니다.")
+         }
       };
 
       function complete(){
+        if ( !confirm ( "완료하시겠습니까?" ) ) {
+          return;
+        }
         var oCheck = document.querySelectorAll(".checked");
 
         if(oCheck && 0<oCheck.length){
@@ -110,11 +117,14 @@
       }
 
       function del(){
+        if ( !confirm ( "삭제하시겠습니까?" ) ) {
+          return;
+        }
         var oCheck = document.querySelectorAll(".checked");
         if(oCheck && 0<oCheck.length){
-          for(i=0; i<oCheck.length; i++){
+          // for(i=0; i<oCheck.length; i++){
             $(oCheck).remove();
-             }
+             
         }
       }
     </script>
